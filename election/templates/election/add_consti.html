@@ -1,6 +1,6 @@
-<h1>Create Election</h1>
+<h1>Add Constituency</h1>
 <a href="{% url 'home' %}">Home</a>
-<form action="" method="POST">
+<form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="submit">

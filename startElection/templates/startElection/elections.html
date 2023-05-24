@@ -1,0 +1,15 @@
+<!-- <h1>Choose Election</h1>
+<a href="{% url 'home' %}">Home</a>
+{% for election in elections %}
+<p>{{election.name}}</p>
+{% empty %}
+<p>No Items to show</p>
+{% endfor %} -->
+
+<h1>Choose Election</h1>
+<a href="{% url 'home' %}">Home</a>
+{% for election in elections %}
+<a href="{% url 'election_details' %}">{{ election.name }}</a>
+{% empty %}
+<p>No Items to show</p>
+{% endfor %}

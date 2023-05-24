@@ -1,0 +1,39 @@
+<h1>Add Candidate</h1>
+<a href="{% url 'home' %}">Home</a>
+
+<form action="" method="POST" enctype="multipart/form-data" >
+    <!-- <select id="election-drop" name="{{ dropdown_election}}">
+        <option value="">Select your option</option>
+        {% for item in elections %}
+        <option value="{{ item.id }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <select id="consti-drop" name="{{ dropdown_consti }}">
+        <option value="">Select your option</option>
+        {% for item in constituencies %}
+        <option value="{{ item.id }}">{{ item.name }}</option>
+        {% endfor %}
+    </select> -->
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="submit">
+</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#election-drop').on('change', function () {
+            var election_id = $(this).val();
+            $.ajax({
+                url: '/get_constituencies/',
+                data: {
+                    'election_id': election_id
+                }
+                , success: function (data) {
+                    $('#consti-drop').html(data)
+                }
+            })
+        })
+    })
+</script>

@@ -1,0 +1,11 @@
+<h1>Candidate Details</h1>
+
+<a href="{% url 'home' %}">Home</a>
+
+{% for cand in candi %}
+<p>{{cand.name}}</p>
+<img src="{{cand.photo.url}} "alt="" width="200px">
+<img src="{{cand.candidate_symbol.url}} "alt="" width="200px">
+{% empty %}
+
+{% endfor %}
